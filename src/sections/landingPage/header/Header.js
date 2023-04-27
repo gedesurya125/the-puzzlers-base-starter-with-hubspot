@@ -28,6 +28,10 @@ export const Header = ({ data: { headline } }) => {
     <ContentWrapper>
       <Headline data={headline} />
       <HubSpotForm data={contactUsFormData} />
+      <EmbeddedHubSpotForm
+        formId="d987854c-ee23-42a2-8930-99e642789653"
+        portalId="39610935"
+      />
     </ContentWrapper>
   );
 };
@@ -252,3 +256,35 @@ const SubmitButton = ({ text }) => {
  *  portalId: '39610935',
  *  formId: 'd987854c-ee23-42a2-8930-99e642789653'
  */
+
+const EmbeddedHubSpotForm = ({ portalId, formId }) => {
+  React.useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://js.hsforms.net/forms/v2.js';
+    document.body.appendChild(script);
+
+    script.addEventListener('load', () => {
+      if (window?.hbspt) {
+        window?.hbspt.forms.create({
+          portalId,
+          formId,
+          target: `#${formId}`
+        });
+      }
+    });
+  }, []);
+
+  return (
+    <Box
+      className="hubspot-form-container"
+      sx={{
+        gridColumn: ['1/13'],
+        mt: ['4rem'],
+        '& label > span': {
+          fontFamily: 'primary.normal'
+        }
+      }}>
+      <Box id={formId} />
+    </Box>
+  );
+};
