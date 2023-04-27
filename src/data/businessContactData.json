@@ -1,0 +1,25 @@
+[
+  {
+    "socialLinks": [
+      {
+        "text": "Facebook",
+        "to": "https://www.facebook.com"
+      },
+      {
+        "text": "Instagram",
+        "to": "https://www.instagram.com"
+      }
+    ],
+    "contactLinks": [
+      {
+        "text": "info@example.com",
+        "to": "mailto:info@example.com"
+      },
+      {
+        "text": "+01 2345 678910",
+        "to": "tel:+012345678910"
+      }
+    ],
+    "address": "example street number 00"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "legal": {
+      "company": "",
+      "headOfCompany": "",
+      "address": {
+        "street": "",
+        "city": ""
+      },
+      "tel": "",
+      "ustid": "",
+      "email": "",
+      "commercialRegister": {
+        "court": "",
+        "number": ""
+      },
+      "organicCertification": {
+        "certification": "",
+        "controlAgency": ""
+      }
+    }
+  }
+]

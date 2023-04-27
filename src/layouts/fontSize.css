@@ -1,0 +1,33 @@
+html {
+  font-size: calc(9.365px + ((100vw - 320px) * 9.365 / 2.5 / 320)) !important;
+}
+
+@media screen and (min-width: 500px) {
+  html {
+    font-size: calc(8.99px + ((100vw - 500px) * 8.99 / 2.5 / 500)) !important;
+  }
+}
+
+@media screen and (min-width: 750px) and (orientation: portrait) {
+  html {
+    font-size: calc(9.57px + ((100vw - 750px) * 9.57 / 2.5 / 750)) !important;
+  }
+}
+
+@media screen and (min-width: 700px) and (orientation: landscape) {
+  html {
+    font-size: calc(9.4px + ((100vw - 700px) * 9.4 / 2.5 / 700)) !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: calc(9.28px + ((100vw - 1000px) * 9.28 / 2.5 / 1000)) !important;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  html {
+    font-size: calc(9.89px + ((100vw - 1400px) * 9.89 / 2.5 / 1400)) !important;
+  }
+}

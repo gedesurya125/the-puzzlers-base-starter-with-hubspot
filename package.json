@@ -1,0 +1,59 @@
+{
+  "name": "gatsby-starter-thepuzzlers-base",
+  "description": "A simplified bare-bones website starter for ThePuzzlers",
+  "version": "1.0.1",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "prepare": "cd ../.. && husky install starters/gatsby-starter-thepuzzlers-core/.husky"
+  },
+  "dependencies": {
+    "@emotion/styled": "^11.8.1",
+    "@mdx-js/react": "^2.1.1",
+    "@thepuzzlers/pieces": "^0.1.1",
+    "gatsby": "5.8.1",
+    "gatsby-plugin-image": "^3.7.0",
+    "gatsby-source-keepitsimple": "^1.0.10",
+    "gatsby-theme-thepuzzlers-core": "1.0.0",
+    "gatsby-theme-thepuzzlers-intl": "1.0.0",
+    "gatsby-theme-thepuzzlers-legal-pages": "1.0.1",
+    "gsap": "file:./gsap-bonus-beta.tgz",
+    "prop-types": "^15.7.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.3",
+    "babel-preset-gatsby": "^2.2.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.0",
+    "jest": "^27.3.1",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/thepuzzlers-org/websites/thepuzzlers-website-starter/starters/gatsby-starter-thepuzzlers-core"
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write"
+    ]
+  }
+}

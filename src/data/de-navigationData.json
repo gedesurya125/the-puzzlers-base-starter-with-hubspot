@@ -1,0 +1,31 @@
+[
+  {
+    "menuBtn": "Menu",
+    "pageLinks": [
+      {
+        "text": "Prozess",
+        "to": "/process/"
+      },
+      {
+        "text": "Nachhaltigkeit",
+        "to": "/sustainability/"
+      },
+      {
+        "text": "Inspiration",
+        "to": "/inspiration/"
+      },
+      {
+        "text": "Über uns",
+        "to": "/team/"
+      },
+      {
+        "text": "Kontakt",
+        "to": "/contact/"
+      }
+    ],
+    "language": {
+      "german": "DE",
+      "english": "EN"
+    }
+  }
+]

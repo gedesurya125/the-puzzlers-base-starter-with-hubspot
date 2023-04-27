@@ -1,0 +1,17 @@
+[
+  {
+    "headline": "Footer",
+    "legal": {
+      "links": [
+        {
+          "text": "Impressum",
+          "to": "/legal"
+        },
+        {
+          "text": "Datenschutz",
+          "to": "/privacy-policy"
+        }
+      ]
+    }
+  }
+]
