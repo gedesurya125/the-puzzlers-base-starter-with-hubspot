@@ -6905,6 +6905,13 @@ gatsby-source-graphql@^5.0.0:
     invariant "^2.2.4"
     node-fetch "^2.6.7"
 
+gatsby-source-hubspot-forms@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/gatsby-source-hubspot-forms/-/gatsby-source-hubspot-forms-3.0.3.tgz#a91ae185530443289bd6d2c80c4d3502c054ae9a"
+  integrity sha512-1hcV2HlN5MLzrV5Hqs0xDR/YLT8j02zNWbqBlx2GQ4RTrQnSmJ9q4D+y8rCG090td+EdTtQ3uteobHyrhdgtLw==
+  dependencies:
+    axios "^0.21.1"
+
 gatsby-source-keepitsimple@^1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/gatsby-source-keepitsimple/-/gatsby-source-keepitsimple-1.0.10.tgz#6a0394db2cfbb97532a49470a8dd9f69311d9af8"

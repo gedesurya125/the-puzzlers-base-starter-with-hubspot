@@ -53,6 +53,12 @@ module.exports = {
       options: {
         prefix: 'test-project'
       }
+    },
+    {
+      resolve: 'gatsby-source-hubspot-forms',
+      options: {
+        apiKey: 'pat-na1-34dc3539-7603-44e3-b7fa-68cde5bb20ea'
+      }
     }
   ]
 };

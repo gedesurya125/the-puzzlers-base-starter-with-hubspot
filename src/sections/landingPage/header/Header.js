@@ -7,17 +7,27 @@ import {
   Box,
   Input,
   Label,
-  Button
+  Button,
+  TextArea
 } from '@thepuzzlers/pieces';
 
 import { Formik, Form, useField } from 'formik';
+import { useHubSpotForms } from 'graphqlHooks';
 
 export const Header = ({ data: { headline } }) => {
+  const hubSpotForms = useHubSpotForms();
+
+  const contactUsFormData = hubSpotForms?.nodes?.find(
+    ({ id }) => id === 'd987854c-ee23-42a2-8930-99e642789653'
+  );
+
+  console.log('this is the hubspot forms', contactUsFormData);
+
   return (
     // Markup
     <ContentWrapper>
       <Headline data={headline} />
-      <HubSpotForm />
+      <HubSpotForm data={contactUsFormData} />
     </ContentWrapper>
   );
 };
@@ -49,12 +59,13 @@ const Headline = ({ data }) => (
   />
 );
 
-const HubSpotForm = () => {
+const HubSpotForm = ({
+  data: { formFieldGroups, id, name, portalId, submitText }
+}) => {
   const submitFormToHubSpot = (data) => {
     // Create the new request
     var xhr = new XMLHttpRequest();
-    var url =
-      'https://api.hsforms.com/submissions/v3/integration/submit/39610935/d987854c-ee23-42a2-8930-99e642789653';
+    var url = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${id}`;
 
     var final_data = JSON.stringify(data);
 
@@ -102,8 +113,16 @@ const HubSpotForm = () => {
   return (
     <Box
       sx={{
-        gridColumn: ['1/13']
+        gridColumn: ['1/13'],
+        mt: ['3rem']
       }}>
+      <Heading
+        sx={{
+          fontFamily: 'primary.normal',
+          fontSize: ['4rem']
+        }}>
+        {name}
+      </Heading>
       <Formik
         enableReinitialize
         initialValues={{
@@ -118,20 +137,85 @@ const HubSpotForm = () => {
           submitFormToHubSpot(preparedValues);
         }}>
         <Form>
-          <TextInput label="Email" name="email" id="email-input" />
-          <TextInput label="First Name" name="firstname" id="email-input" />
-          <TextInput label="Last Name" name="lastname" id="email-input" />
-          <TextInput label="Message" name="message" id="email-input" />
-          <SubmitButton />
+          {formFieldGroups.map((fieldGroup, index) => {
+            const fieldProps = fieldGroup.fields[0];
+            return (
+              <FormField
+                key={index}
+                id={fieldProps.name}
+                label={fieldProps.label}
+                name={fieldProps.name}
+                type={fieldProps.fieldType}
+              />
+            );
+          })}
+          <SubmitButton text={submitText} />
         </Form>
       </Formik>
     </Box>
   );
 };
 
-const TextInput = ({ id, label, name }) => {
+const FormField = ({ id, label, name, type = 'text' }) => {
   const [field, meta, helper] = useField(name);
 
+  switch (type) {
+    case 'text':
+      return (
+        <TextInput id={id} name={name} type={type} {...field} label={label} />
+      );
+    case 'textarea':
+      return (
+        <TextAreaInput
+          id={id}
+          name={name}
+          type={type}
+          {...field}
+          label={label}
+        />
+      );
+    default:
+      return (
+        <TextInput id={id} name={name} type={type} {...field} label={label} />
+      );
+  }
+};
+
+const TextInput = ({ label, ...props }) => {
+  return (
+    <FormWrapper id={props.id} label={label}>
+      <Input
+        sx={{
+          fontFamily: 'body.normal',
+          fontSize: ['1.5rem'],
+          borderRadius: '3px',
+          lineHeight: 2,
+          mt: ['1rem']
+        }}
+        {...props}
+      />
+    </FormWrapper>
+  );
+};
+
+const TextAreaInput = ({ label, ...props }) => {
+  return (
+    <FormWrapper id={props.id} label={label}>
+      <TextArea
+        {...props}
+        sx={{
+          fontFamily: 'body.normal',
+          fontSize: ['1.5rem'],
+          borderRadius: '3px',
+          lineHeight: 2,
+          mt: ['1rem']
+        }}
+      />
+    </FormWrapper>
+  );
+};
+
+const FormWrapper = ({ label, id, children }) => {
   return (
     <Box
       sx={{
@@ -145,23 +229,12 @@ const TextInput = ({ id, label, name }) => {
         }}>
         {label}
       </Label>
-      <Input
-        id={id}
-        type="text"
-        sx={{
-          fontFamily: 'body.normal',
-          fontSize: ['1.5rem'],
-          borderRadius: '3px',
-          lineHeight: 2,
-          mt: ['1rem']
-        }}
-        {...field}
-      />
+      {children}
     </Box>
   );
 };
 
-const SubmitButton = () => {
+const SubmitButton = ({ text }) => {
   return (
     <Button
       type="submit"
@@ -169,7 +242,7 @@ const SubmitButton = () => {
         p: '1rem 2rem',
         mt: '2rem'
       }}>
-      Submit
+      {text}
     </Button>
   );
 };

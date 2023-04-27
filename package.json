@@ -19,6 +19,7 @@
     "formik": "^2.2.9",
     "gatsby": "5.8.1",
     "gatsby-plugin-image": "^3.7.0",
+    "gatsby-source-hubspot-forms": "^3.0.3",
     "gatsby-source-keepitsimple": "^1.0.10",
     "gatsby-theme-thepuzzlers-core": "1.0.0",
     "gatsby-theme-thepuzzlers-intl": "1.0.0",
